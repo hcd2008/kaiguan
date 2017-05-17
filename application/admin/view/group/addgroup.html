@@ -1,0 +1,42 @@
+{layout name="layout"}
+<div id="dcMain"> <!-- 当前位置 -->
+  <div id="urHere">
+    后台管理中心<b>></b><strong>角色管理</strong><b>></b><strong>添加角色</strong>
+  </div>
+  <div id="manager" class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
+      <h3>
+        <a href="{:url('group/index')}" class="actionBtn ">角色列表</a>
+        <a href="{:url('group/addGroup')}" class="actionBtn add">添加角色</a>
+        添加角色
+      </h3>
+      <form action="" method="post">
+      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+      <tr>
+        <td width="120">角色名称&nbsp;<span class="red">*</span></td>
+        <td>
+			<input type="text" name="name" class="inpMain" size="80">
+        </td>
+      </tr>
+      <tr>
+        <td>角色权限&nbsp;<span class="red">*</span></td>
+        <td>
+          {foreach $qxconf as $k=>$v}
+              <input type="checkbox" value={$k} name="quanxian[]">&nbsp;{$v}&nbsp;&nbsp;
+          {/foreach}
+        </td>
+      </tr>
+      <tr>
+        <td>排序&nbsp;<span class="red">*</span></td>
+        <td>
+			<input type="text" value=100 name="sort" class="inpMain">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+			<input type="submit" class="btn" name="submit" value="提交" class="inpMain">
+        </td>
+      </tr>
+      </table>
+      </form>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+.container-bg{
+	background: #009FE3;
+}
+.myimg{
+	text-align: center;
+	padding-top:40px;
+	padding-bottom: 10px;
+}
+
+.main{
+	padding:10px 0;
+}
+.myimg h4{
+	color: #fff;
+}
+.lists{
+	padding-bottom: 40px;
+}
+.myinput{
+	width:400px;
+}
+.red{
+	color: red;
+}
+.search{
+	margin:20px 0;
+}
+#footer{
+	height:100px;
+	line-height: 100px;
+	text-align:center;
+	color:#777;
+}
+.infolst{
+	margin-top: 20px;
+}
+.infodetail{
+	border-bottom: 1px solid #ddd;
+	margin:10px;
+	margin-bottom: 20px;
+}
+.liuyanzhe{
+	color:#379BE9;
+}
+.liuyantime{
+	color:#ccc;
+}

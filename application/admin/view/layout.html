@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>后台管理</title>
+<link href="__ASSETS__css/public.css" rel="stylesheet" type="text/css">
+<link href="__ASSETS__css/common.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__ASSETS__js/jquery.min.js"></script>
+<script type="text/javascript" src="__ASSETS__js/global.js"></script>
+</head>
+<body>
+<div id="dcWrap"> <div id="dcHead">
+ <div id="head">
+  <div class="logo"><a href="{:url('admin/index/index')}">系统后台管理</a></div>
+  <div class="nav">
+   <ul>
+    <li><a href="{:url('index/index/index')}" target="_blank">前台首页</a></li>
+    <!-- <li><a href="index.php?rec=clear_cache">清除缓存</a></li>
+    <li><a href="http://www.mycodes.net" target="_blank">帮助</a></li> -->
+    <li class="noRight"><a href="module.html">食品伙伴网</a></li>
+   </ul>
+   <ul class="navRight">
+    <li class="M noLeft"><a href="JavaScript:void(0);">您好，{$Think.session.uname}</a>
+     <div class="drop mUser">
+      <a href="manager.php?rec=edit&id=1">编辑我的个人资料</a>
+      <a href="manager.php?rec=cloud_account">设置云账户</a>
+     </div>
+    </li>
+    <li class="noRight"><a href="{:url('login/logout')}">退出</a></li>
+   </ul>
+  </div>
+ </div>
+</div>
+<!-- dcHead 结束 --> <div id="dcLeft"><div id="menu">
+ <ul class="top">
+  <li><a href="{:url('index/index')}"><i class="home"></i><em>管理首页</em></a></li>
+ </ul>
+
+ <ul>
+    <li><a href="{:url('category/index')}"><i class="productCat"></i><em>商品分类</em></a></li>
+    <li><a href="{:url('admin/member/index')}"><i class="manager"></i><em>管理员管理</em></a></li>
+ </ul>
+
+</div></div>
+{__CONTENT__}
+<div class="clear"></div>
+</div>
+<div id="dcFooter">
+ <div id="footer">
+  <!-- <div class="line"></div> -->
+  <ul>
+   版权所有 © 2016-2018 烟台富美特食品科技有限公司，并保留所有权利。
+  </ul>
+ </div>
+</div><!-- dcFooter 结束 -->
+</body>
+</html>

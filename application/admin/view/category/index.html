@@ -1,0 +1,47 @@
+<div id="dcMain">
+	<div id="urHere">
+		后台管理中心<b>></b><strong>产品分类管理</strong>
+	</div>
+	<div id="manager" class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
+    	<h3>
+    		<a href="{:url('product/cagetory')}" class="actionBtn">分类列表</a>
+    		<a href="{:url('product/index')}" class="actionBtn add">增加1级分类</a>
+    		分类列表
+    	</h3>
+    	<table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+			<tr>
+			 <th width=50 align="center">分类ID</th>
+			 <th align="center">分类名称</th>
+			 <th width=100  align="center">排序</th>
+			 <th width=100 align="center">操作</th>
+			</tr>
+			{volist name='yiji' id="vo"}
+				<tr>
+					<td align="center">{$vo.catid}</td>
+					<td>{$vo.catname}</td>
+					<td align="center">{$vo.paixu}</td>
+					<td align="center">
+						<a href="{:url('category/editCategory',array('catid'=>$vo.catid))}" title='编辑'><img src="__ASSETS__images/edit.png" alt=""></a>
+						<a href="{:url('category/addSon',array('catid'=>$vo.catid))}" title='添加子分类'><img src="__ASSETS__images/add.png" alt=""></a>
+						<a onclick="return confirm('此操作不可恢复，确定删除吗？')" href="{:url('category/delCategory',array('catid'=>$vo.catid))}" title='删除分类'><img src="__ASSETS__images/delete.png" alt=""></a>
+					</td>
+				</tr>
+				<?php foreach($erji[$vo['catid']] as $k=>$v){ ?>
+					<tr>
+					<td align="center">{$v['catid']}</td>
+					<td>&nbsp;&nbsp;--{$v['catname']}</td>
+					<td align="center">{$v['paixu']}</td>
+					<td align="center">
+						<a href="{:url('category/editCategory',array('catid'=>$vo.catid))}" title='编辑'><img src="__ASSETS__images/edit.png" alt=""></a>
+						<a onclick="return confirm('此操作不可恢复，确定删除吗？')" href="{:url('category/delCategory',array('catid'=>$vo.catid))}" title='删除分类'><img src="__ASSETS__images/delete.png" alt=""></a>
+					</td>
+				</tr>
+				<?php } ?>
+
+			{/volist}
+    	</table>
+    	<div class="pages">
+			
+    	</div>
+    </div>
+</div>

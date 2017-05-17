@@ -1,0 +1,76 @@
+{layout name="layout"}
+	<div class="container-fluid container-bg">
+		<div class="container">
+			<div class="row content">
+				<div class="col-md-4">
+					<div class="myimg">
+						<img width="80px" src="__ASSETS__images/shangchuan.png" alt="">
+						<h4 class="text-center">上传</h4>
+					</div>
+					<div class="lists">
+						<div class="panel panel-info">
+						  <!-- Default panel contents -->
+						  <div class="panel-heading text-center">已上传信息<span class="badge">{$yichuan_sum}</span></div>
+						  <!-- <div class="panel-body">
+						    <p>...</p>
+						  </div> -->
+						  <!-- List group -->
+						  <ul class="list-group">
+						  	{volist name="yichuan" id="vo"}
+						     <li class="list-group-item">
+								<a href="{:url('msg/editinfo',array('itemid'=>$vo['itemid']))}">{$vo.title_cn}</a>
+						     </li>
+						    {/volist}
+						  </ul>
+						  
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="myimg">
+						<img width="80px" src="__ASSETS__images/fanyi.png" alt="">
+						<h4 class="text-center">翻译</h4>
+					</div>
+					<div class="lists">
+						<div class="panel panel-info">
+						  <!-- Default panel contents -->
+						  <div class="panel-heading text-center">待翻译信息<span class="badge">{$daifan_sum}</span></div>
+						  <!-- <div class="panel-body">
+						    <p>...</p>
+						  </div> -->
+						  <!-- List group -->
+						  <ul class="list-group">
+						  	{volist name="daifan" id="vo"}
+						     <li class="list-group-item">
+								<a href="{:url('trans/fanyi',array('itemid'=>$vo['itemid']))}">{$vo.title_cn}</a>
+						     </li>
+						    {/volist}
+						  </ul>
+						  
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="myimg">
+						<img width="80px" src="__ASSETS__images/shenhe.png" alt="">
+						<h4 class="text-center">审核</h4>
+					</div>
+					<div class="lists">
+						<div class="panel panel-info">
+						  <!-- Default panel contents -->
+						  <div class="panel-heading text-center">待审核信息<span class="badge">{$daishen_sum}</span></div>
+						  <!-- List group -->
+						  <ul class="list-group">
+						  	{volist name="daishen" id="vo"}
+						     <li class="list-group-item">
+								<a href="{:url('review/show',array('itemid'=>$vo['itemid']))}">{$vo.title_cn}</a>
+						     </li>
+						    {/volist}
+						  </ul>
+						  
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
