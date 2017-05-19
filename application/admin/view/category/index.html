@@ -21,8 +21,9 @@
 					<td>{$vo.catname}</td>
 					<td align="center">{$vo.paixu}</td>
 					<td align="center">
-						<a href="{:url('category/editCategory',array('catid'=>$vo.catid))}" title='编辑'><img src="__ASSETS__images/edit.png" alt=""></a>
 						<a href="{:url('category/addSon',array('catid'=>$vo.catid))}" title='添加子分类'><img src="__ASSETS__images/add.png" alt=""></a>
+						<a href="{:url('category/editCategory',array('catid'=>$vo.catid))}" title='编辑'><img src="__ASSETS__images/edit.png" alt=""></a>
+						
 						<a onclick="return confirm('此操作不可恢复，确定删除吗？')" href="{:url('category/delCategory',array('catid'=>$vo.catid))}" title='删除分类'><img src="__ASSETS__images/delete.png" alt=""></a>
 					</td>
 				</tr>
@@ -32,8 +33,8 @@
 					<td>&nbsp;&nbsp;--{$v['catname']}</td>
 					<td align="center">{$v['paixu']}</td>
 					<td align="center">
-						<a href="{:url('category/editCategory',array('catid'=>$vo.catid))}" title='编辑'><img src="__ASSETS__images/edit.png" alt=""></a>
-						<a onclick="return confirm('此操作不可恢复，确定删除吗？')" href="{:url('category/delCategory',array('catid'=>$vo.catid))}" title='删除分类'><img src="__ASSETS__images/delete.png" alt=""></a>
+						<a href="{:url('category/editCategory',array('catid'=>$v.catid))}" title='编辑'><img src="__ASSETS__images/edit.png" alt=""></a>
+						<a onclick="return confirm('此操作不可恢复，确定删除吗？')" href="{:url('category/delCategory',array('catid'=>$v.catid))}" title='删除分类'><img src="__ASSETS__images/delete.png" alt=""></a>
 					</td>
 				</tr>
 				<?php } ?>

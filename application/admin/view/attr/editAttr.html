@@ -1,0 +1,36 @@
+<div id="dcMain">
+	<div id="urHere">
+		后台管理中心<b>></b><strong>产品属性管理</strong>
+	</div>
+	<div id="manager" class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
+    	<h3>
+    	    <a href="{:url('attr/index')}" class="actionBtn ">属性列表</a>
+    	    <a href="{:url('attr/addAttr')}" class="actionBtn add">添加属性</a>
+    	     编辑属性
+    	</h3>
+    	<form action="" method="post">
+    	<input type="hidden" name="id" value="{$info.id}">
+    	<table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+			<tr>
+				<td width=120>属性字段名 <span class="red">*</span></td>
+				<td>{$info.attr} <span class="red">为了系统安全字段名无法修改，若修改请联系管理员</span></td>
+			</tr>
+			<tr>
+				<td>属性中文名 <span class="red">*</span></td>
+				<td>
+					<input type="text" class="inpMain" size=40 name="attr_cn" value="{$info.attr_cn}">
+				</td>
+			</tr>
+			<tr>
+				<td width=120>排序 <span class="red">*</span></td>
+				<td><input type="text" name="paixu" size=40 class="inpMain" value="{$info.paixu}"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" class="btn" value="提交"></td>
+			</tr>
+			
+    	</table>
+    	</form>
+    </div>
+</div>
