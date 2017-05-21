@@ -1,0 +1,38 @@
+{layout name="layout"}
+<style>
+  .tableBasic td,.tableBasic th{
+    text-align: center;
+  }
+</style>
+<div id="dcMain"> <!-- 当前位置 -->
+  <div id="urHere">
+    后台管理中心<b>></b><strong>产品属性管理</strong>
+  </div>
+  <div id="manager" class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
+      <h3>
+        <a href="{:url('attr/index')}" class="actionBtn ">属性列表</a>
+        属性列表
+      </h3>
+      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+          <tr>
+            <th width=50>属性ID</th>
+            <th width=150>字段名</th>
+            <th>中文名</th>
+            <th>排序</th>
+            <th>操作</th>
+          </tr>
+          {volist name='lists' id='v'}
+              <tr>
+                <td>{$v.id}</td>
+                <td>{$v.attr}</td>
+                <td>{$v.attr_cn}</td>
+                <td>{$v.paixu}</td>
+                <td>
+                    <a href="{:url('attr/editAttr',array('id'=>$v.id))}" title='编辑'><img src="__ASSETS__images/edit.png" alt=""></a>
+                </td>
+              </tr>
+          {/volist}
+      </table>
+      
+    </div>
+</div>

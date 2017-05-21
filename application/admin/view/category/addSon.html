@@ -6,18 +6,23 @@
     	<h3>
     		<a href="{:url('category/index')}" class="actionBtn">分类列表</a>
     		<a href="{:url('category/addCategory')}" class="actionBtn add">增加1级分类</a>
-    		编辑分类
+    		{if $parentid}增加分类{else}增加1级分类{/if}
     	</h3>
     	<form action="" method="post">
-    	<input type="hidden" name="catid" value="{$info.catid}">
     	<table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+    		{if $parentid}
+			<tr>
+				<td>父分类</td>
+				<td>{$parname}</td>
+			</tr>
+    		{/if}
 			<tr>
 				<td width=120>分类名称 <span class="red">*</span></td>
-				<td><input type="text" name="catname" size=60 class="inpMain" value="{$info.catname}"></td>
+				<td><input type="text" name="catname" size=60 class="inpMain"></td>
 			</tr>
 			<tr>
 				<td width=120>排序 <span class="red">*</span></td>
-				<td><input type="text" name="paixu" size=60 class="inpMain" value="{$info.paixu}"></td>
+				<td><input type="text" name="paixu" size=60 class="inpMain" value=100></td>
 			</tr>
 			<tr>
 				<td></td>
