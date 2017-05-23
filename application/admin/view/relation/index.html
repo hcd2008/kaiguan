@@ -4,6 +4,19 @@
     height:10px;
   }
 </style>
+<script>
+  $(function(){
+    $(".myselect").click(function(){
+      var attr1=$(this).attr('attr1');
+      var attr2=$(this).attr('attr2');
+      var url="{:url('relation/detail')}";
+      alert(url);
+      $.post(url,{catid:catid},function(res){
+        alert(11);
+      });
+    })
+  })
+</script>
 <div id="dcMain"> <!-- 当前位置 -->
   <div id="urHere">
     后台管理中心<b>></b><strong>关联关系管理</strong>
@@ -21,7 +34,13 @@
           </tr>
           <tr>
               <td width="120px">属性：</td>
-              <td>{$vo.catname}</td>
+              <td>
+                <?php foreach($zdlist[$vo['catid']] as $kk=>$vv){ ?>
+                    <select class="myselect" name="" id="" attr1='{$vo.catid}' attr2='{$vv.attrid}'>
+                        <option value="">{$vv.attr_cn}</option>
+                    </select>
+                <?php } ?>
+              </td>
           </tr>  
         </table>
         <div class="clear"></div>
