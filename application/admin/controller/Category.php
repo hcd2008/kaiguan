@@ -15,6 +15,7 @@
 			foreach($yiji as $k=>$v){
 				$catid=$v['catid'];
 				$res=Db::name('category')->where('parentid',$catid)->where('status',1)->order('paixu','catid')->select();
+
 				$erji[$catid]=$res;
 			}
 			$this->assign("yiji",$yiji);

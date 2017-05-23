@@ -34,12 +34,12 @@
 					$this->error('编辑失败');
 				}
 			}else{
-				isset($this->param['id']) or $this->error('非法访问');
-				$info=Db::name('attr')->where('id',$this->param['id'])->find();
-				$this->assign("info",$info);
+				$res=Db::name('attr')->order('id')->select();
+				$this->assign('lists',$res);
 				return $this->fetch();
 			}
 		}
+
 		/**
 		 * 添加属性
 		 * @Author   hcd
