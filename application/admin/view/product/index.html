@@ -4,10 +4,26 @@
 	</div>
 	<div id="manager" class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
     	<h3>
-    		<a href="{:url('product/cagetory')}" class="actionBtn">产品列表</a>
-    		<a href="{:url('product/index')}" class="actionBtn add">增加产品</a>
+    		<a href="{:url('product/index')}" class="actionBtn">产品列表</a>
+    		<a href="{:url('product/add')}" class="actionBtn add">增加产品</a>
     		产品列表
     	</h3>
+    	<div class="filter">
+	    	<form action="" method="get">
+	    		<select name="catid" id="">
+	    			<option value="0">产品分类</option>
+					{volist name="yiji" id="vo"}
+						<option disabled value="{$vo.catid}">{$vo.catname}</option>
+						<?php foreach($erji[$vo['catid']] as $k=>$v){ ?>
+							<option <?php if($v['catid']==$catid){ ?> selected <?php } ?> value="{$v.catid}">&nbsp;&nbsp;--{$v.catname}</option>
+						<?php } ?>
+					{/volist}
+	    		</select>
+	    		
+				<input type="text" name="keyword" class="inpMain" size=20 value="{$keyword}" placeholder="产品名称">
+				<input  class="btnGray" type="submit" value="搜索" />
+	    	</form>
+	    </div>
     	<table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
 			<tr>
 			 <th align="left">产品名称</th>
