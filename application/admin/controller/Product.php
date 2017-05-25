@@ -42,6 +42,37 @@
 			$this->assign("catid",$catid);
 			return $this->fetch();
 		}
+		/**
+		 * 添加产品
+		 * @Author   hcd
+		 * @DateTime 2017-05-25T23:19:43+0800
+		 * @version  [version]
+		 */
+		public function add(){
+			$param=$this->request->param();
+			$catid=isset($param['catid'])?$param['catid']:0;
+			$this->assign('catid',$catid);
+			if($catid){
+				//该分类的属性列表
+				$sxlist=Db::name('attr_category')->alias('a')->join('attr b','a.attrid=b.id')->where('a.catid',$catid)->select();
+				$this->assign('sxlist',$sxlist);
+				//该分类的具体选项
+				$xxlist=Db::name('attr_detail')->where('catid',$catid)->select();
+				print_r($xxlist);
+			}
+			//产品分类
+			$yiji=Db::name('category')->where('parentid',0)->where('status',1)->order('paixu','catid')->select();
+			foreach($yiji as $k=>$v){
+				$catid=$v['catid'];
+				$res=Db::name('category')->where('parentid',$catid)->where('status',1)->order('paixu','catid')->select();
+
+				$erji[$catid]=$res;
+			}
+
+			$this->assign("yiji",$yiji);
+			$this->assign("erji",$erji);
+			return $this->fetch();
+		}
 	}
 	
 ?>
