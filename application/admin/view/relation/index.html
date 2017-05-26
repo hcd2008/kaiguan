@@ -27,7 +27,7 @@
               <td width="120px">属性：</td>
               <td>
                 <?php foreach($zdlist[$vo['catid']] as $kk=>$vv){ ?>
-                    <span class="btn btn-default">{$vv.attr_cn}<a></a></span>
+                    <span class="btn btn-default">{$vv.attr_cn}<a href="{:url('relation/addOpton',array('catid'=>$vo['catid'],'attrid'=>$vv['attrid']))}">&nbsp;<img class="myimg" src="__ASSETS__images/add.png" alt="" title='添加新选项'></a></a></span>
 
                 <?php } ?>
                <span><a href="{:url('relation/addAttr',array('catid'=>$vo['catid']))}"><img class="myimg" width=18 height=18 src="__ASSETS__images/jia.png" alt="" title='添加新属性'></a></span>

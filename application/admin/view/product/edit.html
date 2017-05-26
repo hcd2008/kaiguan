@@ -20,13 +20,13 @@
     	<h3>
     		<a href="{:url('product/index')}" class="actionBtn">产品列表</a>
     		<a href="{:url('product/add')}" class="actionBtn add">增加产品</a>
-    		增加产品
+    		编辑产品信息
     	</h3>
     	<form action="" enctype="multipart/form-data" method="post">
 	    	<table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
 				<tr>
 					<td width="140">产品名称：<span class="red">*</span></td>
-					<td><input type="text" class="inpMain" size="100" name="" id="name" value="{$name}"> </td>
+					<td><input type="text" class="inpMain" size="100" name="name" id="name" value="{$info.title}"> </td>
 				</tr>
 				<tr>
 					<td width="140">产品分类：<span class="red">*</span></td>
@@ -36,35 +36,35 @@
 							{volist name="yiji" id="vo"}
 								<option disabled value="{$vo.catid}">{$vo.catname}</option>
 								<?php foreach($erji[$vo['catid']] as $k=>$v){ ?>
-									<option {if $v['catid']==$catid}selected{/if} value="{$v.catid}">&nbsp;&nbsp;--{$v.catname}</option>
+									<option {if $v['catid']==$infocatid}selected{/if} value="{$v.catid}">&nbsp;&nbsp;--{$v.catname}</option>
 								<?php } ?>
 							{/volist}
 		    			</select>
 					</td>
 				</tr>
-				{if $catid}
-					{volist name='sxlist' id="vo"}
-					<tr>
-						<td>{$vo.attr_cn}</td>
-						<td>
-							<select name="{$vo.attr}" id="">
-								<option value="0">--请选择--</option>
-								{volist name="$vo.son" id="vv"}
-									<option value="{$vv.id}">{$vv.title}</option>
-								{/volist}
-							</select>
-						</td>
-					</tr>
-					{/volist}
-					<tr>
-						<td>产品缩略图</td>
-						<td><input type="file" name="image" /></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><input type="submit" value="提交" class="btn"></td>
-					</tr>
-				{/if}
+				
+				{volist name='sxlist' id="vo"}
+				<tr>
+					<td>{$vo.attr_cn}</td>
+					<td>
+						<select name="{$vo.attr}" id="">
+							<option value="0">--请选择--</option>
+							{volist name="$vo.son" id="vv"}
+								<option {if $attrinfo[$vv['attr']]==$vv.id}selected{/if} value="{$vv.id}">{$vv.title}</option>
+							{/volist}
+						</select>
+					</td>
+				</tr>
+				{/volist}
+				<tr>
+					<td>产品缩略图</td>
+					<td>{if $info.litpic}<a target="_blank" href="{if $info.id>4280}http://kg.com/public/uploads/{else}http://www.xk-dg.cn{/if}{$info.litpic}">查看</a>&nbsp;{/if}<input type="file" name="image" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="提交" class="btn"></td>
+				</tr>
+				
 	    	</table>
     	<form action="" enctype="multipart/form-data">
     </div>

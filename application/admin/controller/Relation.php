@@ -41,5 +41,17 @@
 			}
 			return $str;
 		}
+		/**
+		 * 为分类添加属性
+		 * @Author   黄传东
+		 * @DateTime 2017-05-26T17:07:22+0800
+		 */
+		public function addAttr(){
+			$param=$this->param;
+			isset($param['catid']) or $this->error('请选择分类');
+			$catid=$param['catid'];
+			$catinfo=Db::name('catid')->where('catid',$catid)->find();
+			return $this->fetch();
+		}
 	}
 ?>

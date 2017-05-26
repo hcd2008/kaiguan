@@ -15,7 +15,7 @@
 					{volist name="yiji" id="vo"}
 						<option disabled value="{$vo.catid}">{$vo.catname}</option>
 						<?php foreach($erji[$vo['catid']] as $k=>$v){ ?>
-							<option <?php if($v['catid']==$catid){ ?> selected <?php } ?> value="{$v.catid}">&nbsp;&nbsp;--{$v.catname}</option>
+							<option <?php if($v['catid']==$infocatid){ ?> selected <?php } ?> value="{$v.catid}">&nbsp;&nbsp;--{$v.catname}</option>
 						<?php } ?>
 					{/volist}
 	    		</select>
@@ -28,7 +28,9 @@
 			<tr>
 			 <th align="left">产品名称</th>
 			 <th align="center">分类</th>
-			 <th  align="center">图片</th>
+			 <th  align="center">产品缩略图</th>
+			 <th align="center">作者</th>
+			 <th align="center">添加时间</th>
 			 <th align="center">点击量</th>
 			 <th width=100 align="center">操作</th>
 			</tr>
@@ -36,11 +38,13 @@
 				<tr>
 					<td>{$vo.title}</td>
 					<td align="center">{$catlist[$vo['catid']]}</td>
-					<td align="center">{if $vo.litpic}<a target="_blank" href="http://www.xk-dg.cn{$vo.litpic}"></a>{/if}</td>
+					<td align="center">{if $vo.litpic}<a target="_blank" href="{if $vo.id>4280}http://kg.com/public/uploads/{else}http://www.xk-dg.cn{/if}{$vo.litpic}">查看</a>{/if}</td>
+					<td align='center'>{$vo.writer}</td>
+					<td align="center"><?php echo date('Y-m-d',$vo['addtime']); ?></td>
 					<td align="center">{$vo.click}</td>
 					<td align="center">
-						<a href="{:url('product/edit',array('catid'=>$vo.catid))}" title='编辑产品'><img src="__ASSETS__images/edit.png" alt=""></a>
-						<a onclick="return confirm('此操作不可恢复，确定删除吗？')" href="{:url('product/del',array('catid'=>$vo.catid))}" title='删除产品'><img src="__ASSETS__images/delete.png" alt=""></a>
+						<a href="{:url('product/edit',array('id'=>$vo.id))}" title='编辑产品'><img src="__ASSETS__images/edit.png" alt=""></a>
+						<a onclick="return confirm('此操作不可恢复，确定删除吗？')" href="{:url('product/del',array('id'=>$vo.id))}" title='删除产品'><img src="__ASSETS__images/delete.png" alt=""></a>
 					</td>
 				</tr>
 			{/volist}
