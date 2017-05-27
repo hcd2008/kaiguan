@@ -80,7 +80,41 @@
 		 * @DateTime 2017-05-27T16:35:31+0800
 		 */
 		public function addOption(){
-			
+			$param=$this->param;
+			isset($param['catid']) or $this->error('请选择分类');
+			isset($param['attrid']) or $this->error('请选择属性');
+			$catid=$param['catid'];
+			$attrid=$param['attrid'];
+
+			if($this->request->isPost()){
+				$title=isset($param['title'])?trim($param['title']):'';
+				if($title==''){
+					$this->error('请填写选项名称');
+				}
+				//验证是否重复
+				$yz=Db::name('attr_detail')->where('attrid',$attrid)->where('catid',$catid)->where('title',$param['title'])->count();
+				if($yz){
+					$this->error('选项名称重复了！');
+				}else{
+					$data['catid']=$catid;
+					$data['attrid']=$attrid;
+					$data['title']=$title;
+					$res=Db::name('attr_detail')->insert($data);
+					if($res){
+						$this->success('增加选项成功');
+					}else{
+						$this->error('增加选项失败');
+					}
+				}
+			}else{
+				$catinfo=Db::name('category')->where('catid',$catid)->find();
+				$attrinfo=Db::name('attr')->where('id',$attrid)->find();
+				$nowlist=Db::name('attr_detail')->where('attrid',$attrid)->where('catid',$catid)->select();
+				$this->assign('nowlist',$nowlist);
+				$this->assign('catinfo',$catinfo);
+				$this->assign('attrinfo',$attrinfo);
+				return $this->fetch();
+			}
 		}
 	}
 ?>

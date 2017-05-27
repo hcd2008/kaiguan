@@ -1,0 +1,42 @@
+
+<div id="dcMain"> <!-- 当前位置 -->
+  <div id="urHere">
+    后台管理中心<b>></b><strong>关联关系管理</strong>
+  </div>
+  <div id="manager" class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
+      <h3>
+        <a href="{:url('relation/index')}" class="actionBtn ">关联关系列表</a>
+        为属性增加选项
+      </h3>
+      <form action="" method="post">
+      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+          <tr>
+            <td width=100>产品分类</td>
+            <td>{$catinfo.catname}</td>
+          </tr>
+          <tr>
+            <td>属性</td>
+            <td>{$attrinfo.attr_cn}</td>
+          </tr>
+          <tr>
+            <td>现在的选项</td>
+            <td>
+                {volist name="nowlist" id="vo"}
+                  <p>{$vo.title}</p>
+                {/volist}
+            </td>
+          </tr>
+          <tr>
+            <td>增加选项</td>
+            <td>
+              <input type="text" name="title" size="40" class="inpMain">
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="submit" value="提交"  class="btn"></td>
+          </tr>
+      </table>
+      </form>
+  </div>
+</div>
