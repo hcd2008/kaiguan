@@ -33,16 +33,16 @@
 </div>
 <!-- dcHead 结束 --> <div id="dcLeft"><div id="menu">
  <ul class="top">
-  <li><a href="{:url('index/index')}"><i class="home"></i><em>管理首页</em></a></li>
+  <li><a href="{:url('index/index')}"><i class="home"></i><em>使用帮助</em></a></li>
  </ul>
 
  <ul>
 
-    <li><a href="{:url('category/index')}"><i class="productCat"></i><em>产品分类管理</em></a></li>
-    <li><a href="{:url('attr/index')}"><i class="page"></i><em>产品属性管理</em></a></li>
-    <li><a href="{:url('relation/index')}"><i class="articleCat"></i><em>对应关系管理</em></a></li>
-    <li><a href="{:url('product/index')}"><i class="product"></i><em>产品管理</em></a></li>
-    <li><a href="{:url('admin/member/index')}"><i class="manager"></i><em>管理员管理</em></a></li>
+    <li {if $controller=='Category'}class="cur"{/if}><a href="{:url('category/index')}"><i class="productCat"></i><em>产品分类管理</em></a></li>
+    <li {if $controller=='Attr'}class="cur"{/if}><a href="{:url('attr/index')}"><i class="page"></i><em>产品属性管理</em></a></li>
+    <li {if $controller=='Relation'}class="cur"{/if}><a href="{:url('relation/index')}"><i class="articleCat"></i><em>对应关系管理</em></a></li>
+    <li {if $controller=='Product'}class="cur"{/if}><a href="{:url('product/index')}"><i class="product"></i><em>产品管理</em></a></li>
+    <li {if $controller=='Member'}class="cur"{/if}><a href="{:url('admin/member/index')}"><i class="manager"></i><em>管理员管理</em></a></li>
  </ul>
 
 </div></div>

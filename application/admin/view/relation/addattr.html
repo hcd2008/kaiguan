@@ -8,15 +8,27 @@
         <a href="{:url('attr/index')}" class="actionBtn ">关联关系列表</a>
         为分类增加属性
       </h3>
+      <form action="" method="post">
       <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
           <tr>
             <td width=100>产品分类</td>
-            <td></td>
+            <td>{$catinfo.catname}</td>
           </tr>
           <tr>
-            <td>产品属性</td>
+            <td>可增加产品属性</td>
+            <td>
+                {volist name="allattr" id="vo"}
+                  <?php  if(!in_array($vo['id'],$lists)){ ?>
+                    <input type="checkbox"  value="{$vo.id}" name="attr[]">&nbsp;{$vo.attr_cn}&nbsp;&nbsp;&nbsp;&nbsp;
+                  <?php } ?>
+                {/volist}
+            </td>
+          </tr>
+          <tr>
             <td></td>
+            <td><input type="submit" value="提交"  class="btn"></td>
           </tr>
       </table>
+      </form>
   </div>
 </div>

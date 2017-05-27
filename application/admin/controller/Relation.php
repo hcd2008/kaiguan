@@ -48,10 +48,39 @@
 		 */
 		public function addAttr(){
 			$param=$this->param;
-			isset($param['catid']) or $this->error('请选择分类');
-			$catid=$param['catid'];
-			$catinfo=Db::name('catid')->where('catid',$catid)->find();
-			return $this->fetch();
+			if($this->request->isPost()){
+				$catid=$param['catid'];
+				$attr['catid']=$catid;
+				foreach ($param['attr'] as $k => $v) {
+					$attr['attrid']=$v;
+					Db::name('attr_category')->insert($attr);
+				}
+				$this->success('添加属性成功');
+			}else{
+				isset($param['catid']) or $this->error('请选择分类');
+				$catid=$param['catid'];
+				$catinfo=Db::name('category')->where('catid',$catid)->find();
+				//分类拥有的属性
+				$res=Db::name('attr_category')->alias('a')->join('hcd_attr b','a.attrid=b.id')->where('a.catid',$catid)->select();
+				$lists=array();
+				foreach ($res as $k => $v) {
+					$lists[]=$v['attrid'];
+				}
+				//所有属性
+				$allattr=Db::name('attr')->order('paixu')->select();
+				$this->assign('catinfo',$catinfo);
+				$this->assign('allattr',$allattr);
+				$this->assign('lists',$lists);
+				return $this->fetch();
+			}
+		}
+		/**
+		 * 为分类属性添加选项
+		 * @Author   黄传东
+		 * @DateTime 2017-05-27T16:35:31+0800
+		 */
+		public function addOption(){
+			
 		}
 	}
 ?>

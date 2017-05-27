@@ -23,7 +23,7 @@
 				$param['password']!='' or $this->error('密码不能为空');
 				$res=$this->user_login($param['username'],$param['password']);
 				if($this->user_login($param['username'],$param['password'])){
-					$this->success("登录成功","index/index");
+					$this->success("登录成功","product/index");
 				}else{
 					$this->error("账号或密码错误");
 				}

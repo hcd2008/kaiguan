@@ -34,8 +34,10 @@
 					$this->error('编辑失败');
 				}
 			}else{
-				$res=Db::name('attr')->order('id')->select();
-				$this->assign('lists',$res);
+				$param=$this->param;
+				$id=$param['id'];
+				$res=Db::name('attr')->where('id',$id)->find();
+				$this->assign('info',$res);
 				return $this->fetch();
 			}
 		}
