@@ -7,12 +7,16 @@ class Index extends Base
 	//首页内容
     public function index()
     {
-    	$this->assign('yichuan',$this->getlists(1));
-    	$this->assign('daifan',$this->getlists(2));
-    	$this->assign('daishen',$this->getlists(4));
-    	$this->assign('yichuan_sum',$this->getsum(1));
-    	$this->assign('daifan_sum',$this->getsum(2));
-    	$this->assign('daishen_sum',$this->getsum(4));
+        //产品分类
+        $yiji=Db::name('category')->where('parentid',0)->where('status',1)->order('paixu','catid')->select();
+        foreach($yiji as $k=>$v){
+            $catid=$v['catid'];
+            $res=Db::name('category')->where('parentid',$catid)->where('status',1)->order('paixu','catid')->select();
+
+            $erji[$catid]=$res;
+        }
+        $this->assign("yiji",$yiji);
+        $this->assign("erji",$erji);
         return $this->fetch();
     }
     /**

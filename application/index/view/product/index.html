@@ -1,0 +1,42 @@
+{layout name='layout'}
+	<link rel="stylesheet" href="__ASSETS__skin/css/product.css">
+	<div id="main">
+		<h3><span style="color:#00AEED">{$catinfo.catname}</span>产品检索</h3>
+		<table class="table table-bordered">
+		{volist name='lists' id="vo"}
+			<tr>	
+				<td class='shoutd'>{$vo.attr_cn}</td>
+				<td style="line-height: 35px;" class='guige'>
+					<?php  foreach($vo['son'] as $kk=>$vv){ ?>
+						<span class="btn btn-xs btn-default">{$vv.title}</span>
+					<?php } ?>
+				</td>	
+			</tr>
+		{/volist}
+		</table>
+	</div>
+	<div id="product">
+		<h3>发现产品24件</h3>
+		<table class="table table-bordered">
+			<tr>
+				<th class='diyith'>产品名称</th>
+				<th class='diyith'>产品图片</th>
+			{volist name="lists" id="v"}
+				<th class='diyith'>{$v.attr_cn}</th>
+			{/volist}
+			</tr>
+			{volist name="plists" id="vv"}
+				<tr>
+					<td>{$vv.title}</td>
+					<td></td>
+					{volist name="lists" id="v1"}
+						<td>
+							<?php $cpid=$vv[$v1['attr']]; if(isset($alloptions[$cpid])){echo $alloptions[$cpid]['title'];} ?>
+						</td>
+						
+					{/volist}
+				</tr>
+			{/volist}
+		</table>
+		<div class="pages">{$plists->render()}</div>
+	</div>

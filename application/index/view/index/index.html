@@ -1,76 +1,49 @@
-{layout name="layout"}
-	<div class="container-fluid container-bg">
-		<div class="container">
-			<div class="row content">
-				<div class="col-md-4">
-					<div class="myimg">
-						<img width="80px" src="__ASSETS__images/shangchuan.png" alt="">
-						<h4 class="text-center">上传</h4>
-					</div>
-					<div class="lists">
-						<div class="panel panel-info">
-						  <!-- Default panel contents -->
-						  <div class="panel-heading text-center">已上传信息<span class="badge">{$yichuan_sum}</span></div>
-						  <!-- <div class="panel-body">
-						    <p>...</p>
-						  </div> -->
-						  <!-- List group -->
-						  <ul class="list-group">
-						  	{volist name="yichuan" id="vo"}
-						     <li class="list-group-item">
-								<a href="{:url('msg/editinfo',array('itemid'=>$vo['itemid']))}">{$vo.title_cn}</a>
-						     </li>
-						    {/volist}
-						  </ul>
-						  
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="myimg">
-						<img width="80px" src="__ASSETS__images/fanyi.png" alt="">
-						<h4 class="text-center">翻译</h4>
-					</div>
-					<div class="lists">
-						<div class="panel panel-info">
-						  <!-- Default panel contents -->
-						  <div class="panel-heading text-center">待翻译信息<span class="badge">{$daifan_sum}</span></div>
-						  <!-- <div class="panel-body">
-						    <p>...</p>
-						  </div> -->
-						  <!-- List group -->
-						  <ul class="list-group">
-						  	{volist name="daifan" id="vo"}
-						     <li class="list-group-item">
-								<a href="{:url('trans/fanyi',array('itemid'=>$vo['itemid']))}">{$vo.title_cn}</a>
-						     </li>
-						    {/volist}
-						  </ul>
-						  
-						</div>
+{layout name='layout'}
+<script>
+	$(function(){
+		$(".hcd_produt").hover(function(){
+			$(".erji").hide();
+			$(this).find('.erji').show();
+		},function(){
+			$(".erji").hide();
+		})
+	})
+</script>
+
+<LINK href="__ASSETS__/skin/css/hcd.css" rel=stylesheet>
+<div id="main">
+	<div class="lanmuxqcp"><h2>产品中心</h2><span>ABOUT XKB</span></div>
+	<table class="hcd_tb">
+		<tr>
+		{volist name='yiji' id="vo"}
+			<td>
+				<div class="hcd_produt">
+					<img width="180px" src="__ASSETS__skin/images/product{$vo.catid}.gif" alt="">
+					<p class="pname">{$vo.catname}系列</p>
+					<div class="erji">
+						<div class="erjiimg"><img src="__ASSETS__skin/images/sanjiao.png" alt=""></div>
+						<ul class='erjiul'>
+						<?php foreach($erji[$vo['catid']] as $k=>$v){ ?>
+							<li><a href="{:url('product/index',array('catid'=>$v['catid']))}">{$v['catname']}</a></li>
+						<?php } ?>
+						</ul>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="myimg">
-						<img width="80px" src="__ASSETS__images/shenhe.png" alt="">
-						<h4 class="text-center">审核</h4>
-					</div>
-					<div class="lists">
-						<div class="panel panel-info">
-						  <!-- Default panel contents -->
-						  <div class="panel-heading text-center">待审核信息<span class="badge">{$daishen_sum}</span></div>
-						  <!-- List group -->
-						  <ul class="list-group">
-						  	{volist name="daishen" id="vo"}
-						     <li class="list-group-item">
-								<a href="{:url('review/show',array('itemid'=>$vo['itemid']))}">{$vo.title_cn}</a>
-						     </li>
-						    {/volist}
-						  </ul>
-						  
-						</div>
+			</td>
+		{/volist}
+			<td>
+				<div class="hcd_produt">
+					<img width="180px" src="__ASSETS__skin/images/jp11.gif" alt="">
+					<p class="pname">机械键盘系列</p>
+					<div class="erji">
+						<div class="erjiimg"><img src="__ASSETS__skin/images/sanjiao.png" alt=""></div>
+						<ul class='erjiul'>
+							<li><a href="http://s.gedaocao.com/category.php?id=369">奢华金机械键盘</a></li>
+							<li><a href="http://s.gedaocao.com/category.php?id=370">珠光银机械键盘</a></li>
+						</ul>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
+			</td>
+		</tr>
+	</table>
+</div>

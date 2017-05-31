@@ -1,0 +1,51 @@
+#main{
+	width:1000px;
+	margin:0 auto;
+	min-height: 500px;
+	background: #fff;
+}
+.hcd_tb{
+	width:100%;
+}
+.hcd_tb td{
+	width:25%;
+	text-align: center;
+}
+.hcd_produt{
+	width:200px;
+	margin-top:20px;
+	border:1px solid #ccc;
+	border-radius: 5px;
+	box-shadow:10px 10px 5px #ccc;
+	position: relative;
+	top:-10px;
+}
+p.pname{
+	font-size: 14px;
+	margin:0;
+	padding:0;
+	line-height: 50px;
+	height: 50px;
+	border-top: 1px solid #ccc;
+}
+.erjiul{
+	border:1px solid #eee;
+	border-radius: 3px;
+	position: relative;
+	top:-3px;
+}
+.erjiul li{
+	/*padding-left: 20px;
+	border:1px solid red;
+	background: url('../images/dayu.png') no-repeat center left;*/
+	padding:5px;
+}
+.clear{
+	clear:both;
+}
+.erji{
+	display: none;
+	position: absolute;
+	width:150px;
+	top:220px;
+}
