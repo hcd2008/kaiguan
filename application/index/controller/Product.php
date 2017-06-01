@@ -2,6 +2,7 @@
 	namespace app\index\controller;
 	use think\Db;
 	use think\Controller;
+	use think\Session;
 
 	class Product extends Controller{
 		/**
@@ -13,6 +14,8 @@
 		public function index(){
 			$param=$this->request->param();
 			$catid=isset($param['catid'])?$param['catid']:0;
+			$map['catid']=$catid;
+			unset($param['catid']);
 			$catinfo=Db::name('category')->where('catid',$catid)->find();
 			if($catid==0){
 				$this->error('非法访问');
@@ -26,6 +29,7 @@
 				$v['son']=$jg;
 				$lists[$k]=$v;
 			}
+			// print_r($lists);exit;
 			//所有选项
 			$alloption=Db::name('attr_detail')->where('catid',$catid)->select();
 			
@@ -34,12 +38,32 @@
 			}
 			
 			//产品信息表
-			$product=Db::name('product_attr')->alias('a')->field('a.*,b.title')->join('hcd_product b','a.id=b.id')->where('a.catid',$catid)->paginate();
-			// print_r($product);exit;
+			$map['catid']=$catid;
+			unset($param['catid']);
+			foreach($param as $kk=>$vv){
+				$map[$kk]=$vv;
+				//传输参数
+				$this->assign('sxid',$vv);
+			}
+			// $product=Db::name('product_attr')->alias('a')->field('a.*,b.title,b.litpic')->join('hcd_product b','a.id=b.id')->where('a.catid',$catid)->paginate();
+			$product=Db::name('product_attr')->where($map)->paginate();
+			//结果数量
+			$resshu=Db::name('product_attr')->where($map)->count();
+			$products=array();
+			foreach ($product as $k => $v) {
+				$pinfo=Db::name('product')->where('id',$v['id'])->find();
+				$v['title']=$pinfo['title'];
+				$v['litpic']=$pinfo['litpic'];
+				$products[$k]=$v;
+			}
+			// print_r($products);exit;
 			$this->assign('catinfo',$catinfo);
 			$this->assign('lists',$lists);
-			$this->assign('plists',$product);
+			$this->assign('plists',$products);
+			$this->assign('chanpin',$product);
 			$this->assign('alloptions',$alloptions);
+			$this->assign('catid',$catid);
+			$this->assign('resshu',$resshu);
 			return $this->fetch();
 		}
 	}

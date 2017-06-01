@@ -8,7 +8,7 @@
 				<td class='shoutd'>{$vo.attr_cn}</td>
 				<td style="line-height: 35px;" class='guige'>
 					<?php  foreach($vo['son'] as $kk=>$vv){ ?>
-						<span class="btn btn-xs btn-default">{$vv.title}</span>
+						<span class="btn btn-xs btn-default {if $vv['id']==$sxid}btn-info{/if}"><a href="{:url('product/index',array('catid'=>$catid,$vo['attr']=>$vv['id']))}">{$vv.title}</a></span>
 					<?php } ?>
 				</td>	
 			</tr>
@@ -16,7 +16,7 @@
 		</table>
 	</div>
 	<div id="product">
-		<h3>发现产品24件</h3>
+		<h3>发现产品<span style="color:#00AEED">{$resshu}</span>件</h3>
 		<table class="table table-bordered">
 			<tr>
 				<th class='diyith'>产品名称</th>
@@ -28,7 +28,15 @@
 			{volist name="plists" id="vv"}
 				<tr>
 					<td>{$vv.title}</td>
-					<td></td>
+					<td>
+						<?php if($vv['litpic']!=''){
+							if($vv['id']<4065){
+								//echo "<img src='http://www.xk-dg.cn".$vv['litpic']."'>";
+							}else{
+								//echo "<img src='/public/uploads".$vv['litpic']."'>";
+							}
+						} ?>
+					</td>
 					{volist name="lists" id="v1"}
 						<td>
 							<?php $cpid=$vv[$v1['attr']]; if(isset($alloptions[$cpid])){echo $alloptions[$cpid]['title'];} ?>
@@ -38,5 +46,5 @@
 				</tr>
 			{/volist}
 		</table>
-		<div class="pages">{$plists->render()}</div>
+		<div class="pages">{$chanpin->render()}</div>
 	</div>
