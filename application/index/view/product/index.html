@@ -1,14 +1,38 @@
 {layout name='layout'}
+<style>
+	.myh3{
+		height:50px;
+		line-height: 50px;
+		position: relative;
+		font-size: 18px;
+	}
+	.tiaojian{
+		width:1200px;
+		position: relative;
+	}
+	.chongzhi{
+		position: absolute;
+		top:10px;
+		right:20px;
+	}
+	.bukexuan{
+		color:#ccc;
+	}
+</style>
 	<link rel="stylesheet" href="__ASSETS__skin/css/product.css">
 	<div id="main">
-		<h3><span style="color:#00AEED">{$catinfo.catname}</span>产品检索</h3>
+		<div class="tiaojian">
+			<h3 class="myh3"><span style="color:#00AEED">{$catinfo.catname}</span>产品检索</h3>
+			<div class="chongzhi"><a class="btn btn-primary" href="{:url('product/index',array('catid'=>$catid))}">重置检索条件</a></div>
+		</div>
+
 		<table class="table table-bordered">
 		{volist name='lists' id="vo"}
 			<tr>	
 				<td class='shoutd'>{$vo.attr_cn}</td>
 				<td style="line-height: 35px;" class='guige'>
 					<?php  foreach($vo['son'] as $kk=>$vv){ ?>
-						<span class="btn btn-xs btn-default {if $vv['id']==$sxid}btn-info{/if}"><a href="{:url('product/index',array('catid'=>$catid,$vo['attr']=>$vv['id']))}">{$vv.title}</a></span>
+						<span class="btn btn-xs btn-default {if in_array($vv['id'],$sxid)}btn-info{/if}"><a {if $vv['sum']==0}class="bukexuan"{/if} href="{:url('product/index',array('catid'=>$catid,$vo['attr']=>$vv['id']))}">{$vv.title}({$vv.sum})</a></span>
 					<?php } ?>
 				</td>	
 			</tr>
@@ -16,7 +40,7 @@
 		</table>
 	</div>
 	<div id="product">
-		<h3>发现产品<span style="color:#00AEED">{$resshu}</span>件</h3>
+		<h3 class="myh3">发现产品<span style="color:#00AEED">{$resshu}</span>件</h3>
 		<table class="table table-bordered">
 			<tr>
 				<th class='diyith'>产品名称</th>
